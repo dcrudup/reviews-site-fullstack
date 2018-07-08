@@ -10,8 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-
-
 @Entity
 public class Review {
 
@@ -29,8 +27,7 @@ public class Review {
 	@ManyToMany
 	private Collection<Tag> tags;
 
-
-	public Review(String name, String description, String image, Category beverage, Tag...tags) {
+	public Review(String name, String description, String image, Category beverage, Tag... tags) {
 		this.name = name;
 		this.description = description;
 		this.image = image;
@@ -52,7 +49,7 @@ public class Review {
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public String getImage() {
 		return image;
 	}
@@ -64,7 +61,7 @@ public class Review {
 	public Collection<Tag> getTags() {
 		return tags;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -86,6 +83,5 @@ public class Review {
 			return false;
 		return true;
 	}
-
 
 }

@@ -14,9 +14,8 @@ public class Tag {
 	private long id;
 
 	private String description;
-	
-	
-	@ManyToMany(mappedBy = "tags")//track reviews by tags
+
+	@ManyToMany(mappedBy = "tags") // track reviews by tags
 	private Collection<Review> reviews;
 
 	public Tag(String description) {
@@ -37,6 +36,7 @@ public class Tag {
 	public Collection<Review> getReviews() {
 		return reviews;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -58,6 +58,5 @@ public class Tag {
 			return false;
 		return true;
 	}
-
 
 }

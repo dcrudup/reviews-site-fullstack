@@ -16,7 +16,7 @@ public class Category {
 
 	private String beverage;
 
-	@OneToMany(mappedBy = "beverage")//tracked by beverage
+	@OneToMany(mappedBy = "beverage") // tracked by beverage
 	private Collection<Review> reviews;
 
 	public Category(String beverage) {
@@ -34,7 +34,7 @@ public class Category {
 	public String getBeverage() {
 		return beverage;
 	}
-	
+
 	public Collection<Review> getReviews() {
 		return reviews;
 	}

@@ -39,7 +39,7 @@ public class ReviewControllerMockMvcTest {
 	private CategoryRepository categoryRepo;
 	
 	@Mock
-	private Category cagtegory;
+	private Category category;
 	
 	@MockBean
 	private TagRepository tagRepo;
@@ -51,7 +51,31 @@ public class ReviewControllerMockMvcTest {
 	public void shouldRouteToSingleReviewView() throws Exception{
 		long reviewId = 1;
 		when(reviewRepo.findById(reviewId)).thenReturn(Optional.of(review));
-		mvc.perform(get("/review?id=1")).andExpect(view().name(is(review)));
+		mvc.perform(get("/review?id=1")).andExpect(view().name(is("review")));
+	}
+	
+	@Test
+	public void shouldRouteToAllReviewView() throws Exception {
+		mvc.perform(get("/show-reviews")).andExpect(view().name(is("reviews")));
+	}
+	
+	@Test
+	public void shouldBeOkForAllReviews() throws Exception {
+		mvc.perform(get("/show-reviews")).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void shouldBeOkForSingleReview() throws Exception {
+		long reviewId = 1;
+		when(reviewRepo.findById(reviewId)).thenReturn(Optional.of(review));
+		mvc.perform(get("/review?id=1")).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void shouldRouteToSingleCategoryView() throws Exception {
+		long categoryId = 1;
+		when(categoryRepo.findById(categoryId)).thenReturn(Optional.of(category));
+		mvc.perform(get("/category?id=1")).andExpect(view().name(is("category")));
 	}
 
 	@Test
@@ -64,8 +88,34 @@ public class ReviewControllerMockMvcTest {
 		mvc.perform(get("/show-categories")).andExpect(status().isOk());
 	}
 	
+	@Test
+	public void shouldRouteToSingleTagView() throws Exception {
+		long tagId = 1;
+		when(tagRepo.findById(tagId)).thenReturn(Optional.of(tag));
+		mvc.perform(get("/tag?id=1")).andExpect(view().name(is("tag")));
+	}
 	
-
-
+	@Test
+	public void shouldBeOkForSingleCategory() throws Exception {
+		long categoryId = 1;
+		when(categoryRepo.findById(categoryId)).thenReturn(Optional.of(category));
+		mvc.perform(get("/category?id=1")).andExpect(status().isOk());
+	}
 	
+	@Test
+	public void shouldBeOkForSingleTag() throws Exception {
+		long tagId = 1;
+		when(tagRepo.findById(tagId)).thenReturn(Optional.of(tag));
+		mvc.perform(get("/tag?id=1")).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void shouldRouteToAllTagsView() throws Exception {
+		mvc.perform(get("/show-tags")).andExpect(view().name(is("tags")));
+	}
+	
+	@Test
+	public void shouldBeOkForAllTags() throws Exception {
+		mvc.perform(get("/show-tags")).andExpect(status().isOk());
+	}
 }

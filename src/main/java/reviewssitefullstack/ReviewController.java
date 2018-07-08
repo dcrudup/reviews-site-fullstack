@@ -4,10 +4,12 @@ import java.util.Optional;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+@Controller
 public class ReviewController {
 
 	@Resource
@@ -25,9 +27,9 @@ public class ReviewController {
 
 		if (review.isPresent()) {
 			model.addAttribute("reviewsModel", review.get());
-			return "reviewTemplate";
+			return "review";
 		}
-		
+
 		throw new ReviewNotFoundException();
 	}
 
@@ -38,9 +40,9 @@ public class ReviewController {
 
 		if (category.isPresent()) {
 			model.addAttribute("categoriesModel", category.get());
-			return "categoryTemplate";
+			return "category";
 		}
-		
+
 		throw new CategoryNotFoundException();
 	}
 
@@ -50,7 +52,7 @@ public class ReviewController {
 
 		if (tag.isPresent()) {
 			model.addAttribute("tagsModel", tag.get());
-			return "tagTemplate";
+			return "tag";
 		}
 
 		throw new TagNotFoundException();
