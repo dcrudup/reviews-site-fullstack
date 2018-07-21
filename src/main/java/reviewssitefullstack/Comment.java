@@ -1,42 +1,50 @@
 package reviewssitefullstack;
 
-import java.util.Collection;
-
+import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Tag {
+public class Comment {
+
+	private String author;
+	
+	@ManyToOne
+	private Review review;
+	
+	private String content;
+	
 	@Id
 	@GeneratedValue
 	private long id;
-
-	private String description;
-
-	@ManyToMany(mappedBy = "tags") // track reviews by tags
-	private Collection<Review> reviews;
 	
 	public long getId() {
 		return id;
 	}
-
-	public String getDescription() {
-		return description;
+	
+	public String getAuthor() {
+		return author;
 	}
 	
-	public Collection<Review> getReviews() {
-		return reviews;
+	public Review getReview() {
+		return review;
+	}
+	
+	public String getContent() {
+		return content;
+	}
+	
+	public Comment() {
+		
 	}
 
-	public Tag() {
+	public Comment(String author, Review review, String content) {
+		this.author = author;
+		this.review = review;
+		this.content = content;
 	}
-
-	public Tag(String description) {
-		this.description = description;
-	}
-
 
 	@Override
 	public int hashCode() {
@@ -54,10 +62,9 @@ public class Tag {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Tag other = (Tag) obj;
+		Comment other = (Comment) obj;
 		if (id != other.id)
 			return false;
 		return true;
 	}
-
 }

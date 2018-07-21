@@ -1,8 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<link rel="stylesheet" type="text/css" href="/style.css">
-
 <head>
 <title>A Review</title>
 
@@ -15,9 +13,9 @@
 	<div th:each="review: ${reviewsModel}">
 
 		<h2 th:text="${review.name}"></h2>
+		<img id="reviewImage" th:src="${review.image}">
 		<p th:text="${review.description}"></p>
 		<p th:text="${review.beverage.beverage}"></p>
-		<img id="reviewImage" th:src="${review.image}">
 
 
 		<h3>Category for this review</h3>
@@ -31,10 +29,58 @@
 			<a th:href="@{/tag(id=${tag.id})}" th:text="${tag.description}"></a>
 		</div>
 
-		<a href="http://localhost:8080/show-reviews">Back to Home</a>
+		<form method="Post">
+			<input name="reviewId" type="hidden" th:value="${review.id}" /> <input
+				type="text" name="tagName" />
+			<button th:formaction="@{/add-tag}">Add Tag with HTML forms</button>
+		</form>
 
+
+
+		<form method="Post">
+			<input name="reviewId" type="hidden" th:value="${review.id}" />
+			<ul>
+				<li th:each="tag: ${review.tags}"><span
+					th:text="${tag.description}"></span>
+					<button id="x" name="tagId" th:value="${tag.id}"
+						th:formaction="@{remove-tag-button}">&times;</button>
+			</ul>
+		</form>
+
+		<div class="add-comment">
+
+			<form method="POST">
+				<section>
+					<label>Enter your name:</label> <input type="text" name="author" />
+				</section>
+
+				<section>
+					<label>What do you think of this review?</label> <input type="text"
+						name="content" />
+				</section>
+
+				<section>
+					<input type="hidden" th:value="${reviewsModel.id}" name="reviewId" />
+				</section>
+
+				<section>
+					<button th:formaction="@{/add-comment}">Add Comment</button>
+				</section>
+			</form>
+
+			<div th:each="comment: ${reviewsModel.comments}">
+
+				<h5>
+					<span th:text="${comment.author}">Commenter</span>says . . .
+				</h5>
+				<p th:text="${comment.content}"></p>
+
+			</div>
+
+		</div>
 	</div>
 
-</body>
+	<a href="http://localhost:8080/show-reviews">Back to Home</a>
 
+</body>
 </html>
