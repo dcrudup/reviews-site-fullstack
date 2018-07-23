@@ -218,24 +218,4 @@ public class JpaMappingsTest {
 		assertThat(review.getComments(), containsInAnyOrder(testComment1, testComment2));
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

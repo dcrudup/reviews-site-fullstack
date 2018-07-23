@@ -16,7 +16,6 @@ public class CommentController {
 	@Resource
 	private ReviewRepository reviewRepo;
 	
-	
 	@RequestMapping("/add-comment")
 	public String addComment(String author, Long reviewId, String content) {
 		Optional<Review> reviewResult = reviewRepo.findById(reviewId);
@@ -26,7 +25,6 @@ public class CommentController {
 		commentRepo.save(newComment);
 		
 		return "redirect:/review?id=" + reviewId;
-		
 	}
 
 }

@@ -49,10 +49,10 @@ public class ReviewControllerTest {
 	private TagRepository tagRepo;
 
 	@Mock
-	private Tag tag1;
-
-	@Mock
 	private Tag tag;
+	
+	@Mock
+	private Tag tag1;
 
 	@Mock
 	private Tag anotherTag;
