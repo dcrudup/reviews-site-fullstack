@@ -1,29 +1,31 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
+
 <head>
 <title>A Review</title>
-
+	<link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+	<link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
-
-	<h1>A Single Review</h1>
+	<h1>Beverage Review</h1>
 
 	<div th:each="review: ${reviewsModel}">
 		<p th:text="${review.name}"></p>
 		<p th:text="${review.description}"></p>
-		<img th:src="${review.image}">
+		<img id="reviewImage" img th:src="${review.image}">
 
 		<h3>Category for this review</h3>
 		<div th:each="category: ${review.beverage}">
-			<a th:href="@{/category(id=${category.id})}" th:text="${category.beverage}"></a>
+			<a th:href="@{/category(id=${category.id})}"
+				th:text="${category.beverage}"></a>
 		</div>
 
 		<h3>Tags associated with this review</h3>
 		<div th:each="tag: ${review.tags}">
 			<a th:href="@{/tag(id=${tag.id})}" th:text="${tag.description}"></a>
-		</div>	
+		</div>
 
 		<form method="Post">
 			<input name="reviewId" type="hidden" th:value="${review.id}" /> <input
@@ -44,7 +46,6 @@
 		</form>
 
 		<div class="add-comment">
-
 			<form method="POST">
 				<section>
 					<label>Enter your name:</label> <input type="text" name="author" />
@@ -65,14 +66,11 @@
 			</form>
 
 			<div th:each="comment: ${reviewsModel.comments}">
-
 				<h5>
-					<span th:text="${comment.author}">Commenter</span>says . . .
+					<span th:text="${comment.author}">Commenter</span> says . . .
 				</h5>
 				<p th:text="${comment.content}"></p>
-
 			</div>
-
 		</div>
 	</div>
 

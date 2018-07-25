@@ -2,12 +2,13 @@
 
 <head>
 <title>Tags Page</title>
+	<link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+	<link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
 
 	<div class="container">
-
 		<header>
 			<h1>Tags Page</h1>
 		</header>
@@ -30,16 +31,15 @@
 					<li th:if="${tagsModel.size() ==0}">Currently no tags...please
 						add one!</li>
 					<li th:if="${tagsModel.size() !=0}" th:each="tag: ${tagsModel}">
-				<a th:href="@{/tag(id=${id})}" th:text="${tag.description}"></a></li>
+						<a th:href="@{/tag(id=${id})}" th:text="${tag.description}"></a>
+					</li>
 				</ul>
-
-
 			</section>
 		</div>
 	</div>
 	<!-- container -->
 </body>
 
-<script src = "./js/server-requests.js"></script>
+<script src="./js/server-requests.js"></script>
 
 </html>

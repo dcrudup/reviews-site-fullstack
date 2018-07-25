@@ -3,7 +3,8 @@ body{
 	border-style: solid;
 	border-width: 15px;
 	padding: 10px;
-	text-align: center;
+	font-family: 'Dosis', sans-serif;
+	text-align: left;
 }
 
 h2{

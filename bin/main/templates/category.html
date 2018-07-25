@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>Category</title>
 
+<head>
+<title>Beverage Category</title>
+	<link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+	<link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
-
 	<h2 th:text=" 'Reviews for: ' + ${categoriesModel.beverage} "></h2>
 
 	<div th:each=" review: ${categoriesModel.reviews} ">
 		<a th:href=" @{/review(id=${review.id})}" th:text="${review.name} "></a>
 	</div>
-
 </body>
 </html>
