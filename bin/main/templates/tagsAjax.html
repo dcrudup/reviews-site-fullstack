@@ -29,10 +29,10 @@
 				<ul>
 					<li th:if="${tagsModel.size() ==0}">Currently no tags...please
 						add one!</li>
-					<li th:if="${tagsModel.size() !=0}" th:each="tag: ${tagsModel}"></li>
+					<li th:if="${tagsModel.size() !=0}" th:each="tag: ${tagsModel}">
+				<a th:href="@{/tag(id=${id})}" th:text="${tag.description}"></a></li>
 				</ul>
 
-				<a th:href="@{/tag(id=${tag.id})}" th:text="${tag.description}"></a>
 
 			</section>
 		</div>
@@ -40,6 +40,6 @@
 	<!-- container -->
 </body>
 
-<script src="./js/server-requests.js"></script>
+<script src = "./js/server-requests.js"></script>
 
 </html>

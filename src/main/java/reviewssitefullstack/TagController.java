@@ -86,11 +86,8 @@ public class TagController {
 				reviewRepo.save(review);
 			}
 		}
-
 		tagRepo.delete(tagToDelete);
 		model.addAttribute("tagsModel", tagRepo.findAll());
-
 		return "partials/tags-list-removed";
 	}
-
 }
