@@ -21,7 +21,6 @@ public class TagController {
 	ReviewRepository reviewRepo;
 
 	// Can add tag with HTML Forms
-
 	@RequestMapping("/add-tag")
 	public String addTag(@RequestParam(value = "reviewId") Long reviewId, String tagName) {
 		Tag newTag = tagRepo.findByDescription(tagName);

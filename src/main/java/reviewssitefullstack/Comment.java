@@ -10,40 +10,40 @@ import javax.persistence.ManyToOne;
 public class Comment {
 
 	private String author;
-	
+
 	@ManyToOne
 	private Review review;
-	
+
 	private String content;
-	
+
 	@Id
 	@GeneratedValue
 	private long id;
-	
-	public long getId() {
-		return id;
-	}
-	
-	public String getAuthor() {
-		return author;
-	}
-	
-	public Review getReview() {
-		return review;
-	}
-	
-	public String getContent() {
-		return content;
-	}
-	
-	public Comment() {
-		
-	}
 
 	public Comment(String author, Review review, String content) {
 		this.author = author;
 		this.review = review;
 		this.content = content;
+	}
+
+	public Comment() {
+
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public Review getReview() {
+		return review;
+	}
+
+	public String getContent() {
+		return content;
 	}
 
 	@Override

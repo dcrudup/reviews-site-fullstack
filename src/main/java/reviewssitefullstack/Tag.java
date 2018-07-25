@@ -17,7 +17,7 @@ public class Tag {
 
 	@ManyToMany(mappedBy = "tags") // track reviews by tags
 	private Collection<Review> reviews;
-	
+
 	public long getId() {
 		return id;
 	}
@@ -25,7 +25,7 @@ public class Tag {
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public Collection<Review> getReviews() {
 		return reviews;
 	}
@@ -36,7 +36,6 @@ public class Tag {
 	public Tag(String description) {
 		this.description = description;
 	}
-
 
 	@Override
 	public int hashCode() {

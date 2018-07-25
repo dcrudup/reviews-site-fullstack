@@ -27,7 +27,7 @@ public class Review {
 
 	@ManyToMany
 	private Collection<Tag> tags;
-	
+
 	@OneToMany(mappedBy = "review")
 	private Collection<Comment> comments;
 
@@ -65,7 +65,7 @@ public class Review {
 	public Collection<Tag> getTags() {
 		return tags;
 	}
-	
+
 	public Collection<Comment> getComments() {
 		return comments;
 	}
@@ -92,15 +92,14 @@ public class Review {
 		return true;
 	}
 
-	//allowing the collection to add this tag to our form
+	// allowing the collection to add this tag to our form
 	public void addTag(Tag newTag) {
 		tags.add(newTag);
 	}
 
-	//allowing the collection to have a tag removed
+	// allowing the collection to have a tag removed
 	public void removeTag(Tag tagToRemove) {
 		tags.remove(tagToRemove);
 	}
-
 
 }

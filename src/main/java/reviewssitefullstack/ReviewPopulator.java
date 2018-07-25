@@ -48,5 +48,4 @@ public class ReviewPopulator implements CommandLineRunner {
 		reviewRepo.save(new Review("Bud Light", "Much needed", "/images/beer.jpg", beer, cold, alcoholic));
 		reviewRepo.save(new Review("Nestea", "Refreshing", "/images/icedtea.jpg", tea, cold, nonAlcoholic));
 	}
-
 }
